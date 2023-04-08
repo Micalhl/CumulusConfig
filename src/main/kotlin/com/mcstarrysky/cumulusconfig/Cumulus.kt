@@ -25,7 +25,7 @@ fun Player.buildModal(config: FormConfiguration, filter: Boolean = true, replace
         modal.title((config.title ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
         modal.content((config.content ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
         modal.button1((elements[0] as ButtonComponent).text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
-        modal.button1((elements[1] as ButtonComponent).text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
+        modal.button2((elements[1] as ButtonComponent).text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
         return modal
     }
     error("incorrect type")
