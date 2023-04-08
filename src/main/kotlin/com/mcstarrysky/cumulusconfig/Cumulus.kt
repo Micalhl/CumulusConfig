@@ -24,8 +24,8 @@ fun Player.buildModal(config: FormConfiguration, filter: Boolean = true, replace
         val modal = ModalForm.builder()
         modal.title((config.title ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
         modal.content((config.content ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
-        modal.button1(elements.filterIsInstance<ButtonComponent>()[0].text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
-        modal.button1(elements.filterIsInstance<ButtonComponent>()[1].text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
+        modal.button1((elements[0] as ButtonComponent).text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
+        modal.button1((elements[1] as ButtonComponent).text().also { if (replacePlaceholder) it.replacePlaceholder(this) })
         return modal
     }
     error("incorrect type")
@@ -37,7 +37,8 @@ fun Player.buildSimple(config: FormConfiguration, filter: Boolean = true, replac
         val simple = SimpleForm.builder()
         simple.title((config.title ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
         simple.content((config.content ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
-        elements.filterIsInstance<ButtonComponent>().forEach {
+        elements.forEach {
+            it as ButtonComponent
             simple.button(it.text().also { if (replacePlaceholder) it.replacePlaceholder(this) }, it.image())
         }
         return simple
@@ -50,7 +51,8 @@ fun Player.buildForm(config: FormConfiguration, filter: Boolean = true, replaceP
         val elements = elementFunc.apply(config.elements.build(filter))
         val custom = CustomForm.builder()
         custom.title((config.title ?: "").also { if (replacePlaceholder) it.replacePlaceholder(this) })
-        elements.filterIsInstance<Component>().forEach {
+        elements.forEach {
+            it as Component
             custom.component(it)
         }
         return custom
