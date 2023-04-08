@@ -41,6 +41,9 @@ class TypeButton : Type() {
     }
 
     fun button(): ButtonComponent {
+        if (!keyword.containsKey("type")) {
+            return ButtonComponent.of(text)
+        }
         return ButtonComponent.of(text, type, data)
     }
 }
