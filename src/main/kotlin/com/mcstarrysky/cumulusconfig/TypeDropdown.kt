@@ -18,8 +18,6 @@ class TypeDropdown : Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
     lateinit var options: List<String>
     var defaultOption: Int = 0
@@ -29,7 +27,6 @@ class TypeDropdown : Type() {
         this.text = keyword["text"].toString().colored()
         this.options = (keyword["options"]?.asList() ?: emptyList()).colored()
         this.defaultOption = keyword["defaultOption"].cint
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -38,5 +35,9 @@ class TypeDropdown : Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 }

@@ -16,14 +16,11 @@ class TypeLabel: Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
         this.text = keyword["text"].toString().colored()
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -32,5 +29,9 @@ class TypeLabel: Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 }

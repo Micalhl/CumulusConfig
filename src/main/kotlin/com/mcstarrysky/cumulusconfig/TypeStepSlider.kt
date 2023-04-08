@@ -18,8 +18,6 @@ class TypeStepSlider: Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
     lateinit var steps: List<String>
     var defaultStep: Int = 0
@@ -29,7 +27,6 @@ class TypeStepSlider: Type() {
         this.text = keyword["text"].toString().colored()
         this.steps = (keyword["steps"]?.asList() ?: emptyList()).colored()
         this.defaultStep = keyword["defaultStep"].cint
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -38,5 +35,9 @@ class TypeStepSlider: Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 }

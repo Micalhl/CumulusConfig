@@ -17,8 +17,6 @@ class TypeSlider: Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
     var min: Float = 0f
     var max: Float = 0f
@@ -32,7 +30,6 @@ class TypeSlider: Type() {
         this.max = keyword["max"].cfloat
         this.step = keyword["step"].cfloat
         this.defaultValue = keyword["defaultValue"].cfloat
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -41,5 +38,9 @@ class TypeSlider: Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 }

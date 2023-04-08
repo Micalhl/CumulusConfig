@@ -15,5 +15,7 @@ abstract class Type {
 
     abstract fun build(): Component
 
+    abstract fun element(): String
+
     abstract fun extra(): Map<String, Any?>
 }

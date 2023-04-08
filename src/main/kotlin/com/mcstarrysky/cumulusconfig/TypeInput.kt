@@ -16,8 +16,6 @@ class TypeInput: Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
     lateinit var placeholder: String
 
@@ -25,7 +23,6 @@ class TypeInput: Type() {
         this.keyword = keyword
         this.text = keyword["text"].toString().colored()
         this.placeholder = keyword["placeholder"].toString().colored()
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -34,5 +31,9 @@ class TypeInput: Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 }

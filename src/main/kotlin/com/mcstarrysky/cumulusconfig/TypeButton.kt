@@ -17,8 +17,6 @@ class TypeButton : Type() {
 
     private lateinit var keyword: Map<String, Any>
 
-    var element: String? = null
-
     lateinit var text: String
     lateinit var type: FormImage.Type
     lateinit var data: String
@@ -28,7 +26,6 @@ class TypeButton : Type() {
         this.text = keyword["text"].toString().colored()
         this.type = FormImage.Type.valueOf(keyword["type"].toString())
         this.data = keyword["data"].toString()
-        this.element = keyword["element"].toString()
     }
 
     override fun build(): Component {
@@ -37,6 +34,10 @@ class TypeButton : Type() {
 
     override fun extra(): Map<String, Any?> {
         return keyword["extra"].asMap()
+    }
+
+    override fun element(): String {
+        return keyword["element"].toString()
     }
 
     fun button(): ButtonComponent {
