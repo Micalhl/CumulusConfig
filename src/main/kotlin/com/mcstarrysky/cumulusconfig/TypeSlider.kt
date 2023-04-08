@@ -3,6 +3,7 @@ package com.mcstarrysky.cumulusconfig
 import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.SliderComponent
 import taboolib.common5.cfloat
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -26,7 +27,7 @@ class TypeSlider: Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
+        this.text = keyword["text"].toString().colored()
         this.min = keyword["min"].cfloat
         this.max = keyword["max"].cfloat
         this.step = keyword["step"].cfloat

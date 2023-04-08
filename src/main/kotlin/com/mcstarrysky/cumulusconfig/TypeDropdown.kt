@@ -4,6 +4,7 @@ import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.DropdownComponent
 import taboolib.common.util.asList
 import taboolib.common5.cint
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -25,8 +26,8 @@ class TypeDropdown : Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
-        this.options = keyword["options"]?.asList() ?: emptyList()
+        this.text = keyword["text"].toString().colored()
+        this.options = (keyword["options"]?.asList() ?: emptyList()).colored()
         this.defaultOption = keyword["defaultOption"].cint
         this.element = keyword["element"].toString()
     }

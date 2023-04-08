@@ -2,6 +2,7 @@ package com.mcstarrysky.cumulusconfig
 
 import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.LabelComponent
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -21,7 +22,7 @@ class TypeLabel: Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
+        this.text = keyword["text"].toString().colored()
         this.element = keyword["element"].toString()
     }
 

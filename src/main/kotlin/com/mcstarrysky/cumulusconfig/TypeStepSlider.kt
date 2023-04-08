@@ -4,6 +4,7 @@ import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.StepSliderComponent
 import taboolib.common.util.asList
 import taboolib.common5.cint
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -25,8 +26,8 @@ class TypeStepSlider: Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
-        this.steps = keyword["steps"]?.asList() ?: emptyList()
+        this.text = keyword["text"].toString().colored()
+        this.steps = (keyword["steps"]?.asList() ?: emptyList()).colored()
         this.defaultStep = keyword["defaultStep"].cint
         this.element = keyword["element"].toString()
     }

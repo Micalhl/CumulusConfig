@@ -1,5 +1,6 @@
 package com.mcstarrysky.cumulusconfig
 
+import taboolib.module.chat.colored
 import taboolib.module.configuration.Configuration
 
 /**
@@ -11,8 +12,8 @@ import taboolib.module.configuration.Configuration
  */
 class FormConfiguration(internal val source: Configuration) {
 
-    val title: String? by lazy { source.getString("title") }
+    val title: String? by lazy { source.getString("title")?.colored() }
     val type: FormType by lazy { FormType.valueOf(source.getString("type") ?: error("unknown type")) }
-    val content: String? by lazy { source.getString("content") }
+    val content: String? by lazy { source.getString("content")?.colored() }
     val elements: ElementConfiguration by lazy { ElementConfiguration(this) }
 }

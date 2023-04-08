@@ -3,6 +3,7 @@ package com.mcstarrysky.cumulusconfig
 import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.ToggleComponent
 import taboolib.common5.cbool
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -23,7 +24,7 @@ class TypeToggle: Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
+        this.text = keyword["text"].toString().colored()
         this.defaultValue = keyword["defaultValue"].cbool
         this.element = keyword["element"].toString()
     }

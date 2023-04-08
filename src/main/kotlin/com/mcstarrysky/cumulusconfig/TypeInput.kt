@@ -2,6 +2,7 @@ package com.mcstarrysky.cumulusconfig
 
 import org.geysermc.cumulus.component.Component
 import org.geysermc.cumulus.component.InputComponent
+import taboolib.module.chat.colored
 import taboolib.module.configuration.util.asMap
 
 /**
@@ -22,8 +23,8 @@ class TypeInput: Type() {
 
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
-        this.text = keyword["text"].toString()
-        this.placeholder = keyword["placeholder"].toString()
+        this.text = keyword["text"].toString().colored()
+        this.placeholder = keyword["placeholder"].toString().colored()
         this.element = keyword["element"].toString()
     }
 
