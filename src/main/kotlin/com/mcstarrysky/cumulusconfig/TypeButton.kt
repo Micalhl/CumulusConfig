@@ -24,8 +24,10 @@ class TypeButton : Type() {
     override fun init(keyword: Map<String, Any>) {
         this.keyword = keyword
         this.text = keyword["text"].toString().colored()
-        this.type = FormImage.Type.valueOf(keyword["type"].toString())
-        this.data = keyword["data"].toString()
+        if (keyword.containsKey("type")) {
+            this.type = FormImage.Type.valueOf(keyword["type"].toString())
+            this.data = keyword["data"].toString()
+        }
     }
 
     override fun build(): Component {
