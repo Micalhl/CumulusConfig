@@ -18,7 +18,7 @@ import java.util.function.Function
  * @author mical
  * @since 2023/4/8 11:47 AM
  */
-fun Player.buildModal(config: FormConfiguration, elementFunc: Function<List<Type>, List<Any>>, filter: Boolean = true, replacePlaceholder: Boolean = false): ModalForm.Builder {
+fun Player.buildModal(config: FormConfiguration, filter: Boolean = true, replacePlaceholder: Boolean = false, elementFunc: Function<List<Type>, List<Any>>): ModalForm.Builder {
     if (config.type == FormType.MODAL) {
         val elements = elementFunc.apply(config.elements.build(filter))
         val modal = ModalForm.builder()
@@ -31,7 +31,7 @@ fun Player.buildModal(config: FormConfiguration, elementFunc: Function<List<Type
     error("incorrect type")
 }
 
-fun Player.buildSimple(config: FormConfiguration, elementFunc: Function<List<Type>, List<Any>>, filter: Boolean = true, replacePlaceholder: Boolean = false): SimpleForm.Builder {
+fun Player.buildSimple(config: FormConfiguration, filter: Boolean = true, replacePlaceholder: Boolean = false, elementFunc: Function<List<Type>, List<Any>>): SimpleForm.Builder {
     if (config.type == FormType.SIMPLE) {
         val elements = elementFunc.apply(config.elements.build(filter))
         val simple = SimpleForm.builder()
@@ -45,7 +45,7 @@ fun Player.buildSimple(config: FormConfiguration, elementFunc: Function<List<Typ
     error("incorrect type")
 }
 
-fun Player.buildForm(config: FormConfiguration, elementFunc: Function<List<Type>, List<Any>>, filter: Boolean = true, replacePlaceholder: Boolean = false): CustomForm.Builder {
+fun Player.buildForm(config: FormConfiguration, filter: Boolean = true, replacePlaceholder: Boolean = false, elementFunc: Function<List<Type>, List<Any>>): CustomForm.Builder {
     if (config.type == FormType.CUSTOM) {
         val elements = elementFunc.apply(config.elements.build(filter))
         val custom = CustomForm.builder()

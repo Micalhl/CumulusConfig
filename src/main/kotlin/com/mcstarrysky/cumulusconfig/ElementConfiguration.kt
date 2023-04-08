@@ -18,7 +18,7 @@ class ElementConfiguration(private val source: FormConfiguration) {
             map
         }
         return if (filter) {
-            result.filter { (it["type"] ?: "") in source.type.getSupportComponentType() }
+            result.filter { ((it["type"] ?: it["=="] ) ?: "") in source.type.getSupportComponentType() }
         } else {
             result
         }
