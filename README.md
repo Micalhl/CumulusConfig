@@ -6,7 +6,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.mcstarrrysky:CumulusConfig:{version}")
+    implementation("com.mcstarrysky:CumulusConfig:{version}")
 }
 ```
 
